@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body{
+
+            background-image: url("https://cutewallpaper.org/21/top-movies-wallpaper-1920x1080/Classic-Movies-Wallpapers-56+-images-.jpg");
+        }
+        #navBar {
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            padding: 10px;
+            border-bottom: 2px solid white;
+        }
+
+        #navBar button {
+            width: 80px;
+            height: 34px;
+            margin-left: 20px;
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            outline: none;
+        }
+        #login{
+            width:10%;
+        }
+        h1{
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            margin-top: 10%;
+        }
+        #parent{
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            height: 25px;
+            margin-bottom: 5%;
+        }    
+    </style>
+</head>
+
+<body >
+    <div id="body">
+    <div id="navBar">
+        <button onclick="home()">Home</button>
+        <button onclick="login()">Login</button>
+        <button onclick="signup()">Sign Up</button>
+    </div>
+    
+    <h1>Login</h1>
+    <div id="parent">
+        <form id="login">
+            <input type="text" id="email" placeholder="Enter Email" />
+            <input type="text" id="password" placeholder="Password" />
+            <input type="submit" onclick="startLogin(event)" />
+        </form>
+    </div>
+    </div>
+   
+</body>
+
+</html>
+<script>
+    
+   
+
+     function startLogin(e){
+        e.preventDefault();
+
+        let form = document.getElementById("login");
+
+        const username = form.email.value;
+        const password = form.password.value;
+
+        const userAllData = JSON.parse(localStorage.getItem("userAllData"));
+
+        for(let i=0;i<userAllData.length;i++){
+            let u = userAllData[i].email;
+            let p = userAllData[i].password;
+
+            if(u==username && p==password){
+                window.location.href = "home.html";
+                return;
+            }
+        }
+    
+        alert("Invalid Credentials");
+
+     }
+
+
+    // function login() {
+    //     window.location.href = "login.html";
+    // }
+    function signup() {
+        window.location.href = "signup.html";
+    }
+</script>
